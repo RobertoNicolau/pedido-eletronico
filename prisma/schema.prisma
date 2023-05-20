@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Ambiente local
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ! Ambiente produção
+
+// datasource db {
+//   provider          = "postgresql"
+//   url               = env("DATABASE_URL")
+//   directUrl         = env("DIRECT_URL")
+//   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+// }
+
+model Products {
+  id    String @id @default(uuid())
+  name  String
+  price Float
+}
